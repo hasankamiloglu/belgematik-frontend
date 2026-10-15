@@ -1,0 +1,19 @@
+# .gitignore -> Git'in TAKİP ETMEYECEĞİ (GitHub'a yüklemeyeceği) dosyalar
+
+# --- Kütüphaneler (herkes "npm install" ile kendisi kurar, binlerce dosya) ---
+node_modules/
+
+# --- Derlenmiş çıktı ("npm run build" ile üretilir) ---
+dist/
+
+# --- Gizli ayarlar ---
+.env
+.env.local
+
+# --- Log ve editör dosyaları ---
+*.log
+npm-debug.log*
+.vscode/
+.idea/
+Thumbs.db
+.DS_Store
