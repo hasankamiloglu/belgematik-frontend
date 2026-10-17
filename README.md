@@ -7,7 +7,7 @@
 > - **[belgematik-backend](https://github.com/hasankamiloglu/belgematik-backend)**: Python + Flask API
 >
 > Frontend, verileri backend'den **HTTP istekleriyle (JSON)** alır.
-> Durum: **v0.2 – Proje iskeleti (Hafta 3)**
+> Durum: **v0.3 – Giriş, kayıt ve rol tabanlı sayfalar (Hafta 5)**
 
 ## Teknolojiler
 
@@ -23,13 +23,34 @@ src/
 ├── App.jsx             # Ana bileşen (sayfayı oluşturan parçaları birleştirir)
 ├── styles.css          # Ortak stiller
 ├── api/
-│   └── client.js       # Backend ile konuşan TEK dosya (fetch)
+│   └── client.js       # Backend ile konuşan TEK dosya (fetch + token)
+├── auth/
+│   └── OturumContext.jsx # Giriş yapan kullanıcı, token, otomatik çıkış
+├── hooks/
+│   └── useHashRota.js  # Basit sayfa yönlendirme (#/giris, #/panel ...)
+├── pages/              # Sayfalar
+│   ├── GirisSayfasi.jsx
+│   ├── KayitSayfasi.jsx
+│   ├── PanelSayfasi.jsx    # giriş yapmış herkes
+│   └── YoneticiSayfasi.jsx # sadece yönetici
 └── components/         # Ekran parçaları (bileşenler)
-    ├── Header.jsx      # Üst menü
+    ├── Header.jsx      # Üst menü (giriş durumuna göre değişir)
     ├── HealthBadge.jsx # Backend bağlantı durumu rozeti
     ├── Hero.jsx        # Tanıtım bölümü
+    ├── KorumaliSayfa.jsx # Giriş/yetki yoksa sayfayı göstermez
     └── ModuleList.jsx  # Backend'den gelen modül listesi
 ```
+
+## Sayfalar ve erişim
+
+| Adres | Sayfa | Kim girebilir? |
+|---|---|---|
+| `#/` | Ana sayfa | Herkes |
+| `#/giris`, `#/kayit` | Giriş / Kayıt | Herkes |
+| `#/panel` | Panelim | Giriş yapmış herkes |
+| `#/yonetici` | Yönetici paneli | Sadece yönetici (değilse 403 ekranı) |
+
+Frontend'deki kontrol sadece görüntü içindir. Asıl yetki kontrolü backend'de yapılır.
 
 Bileşenler backend'e doğrudan istek atmaz; `api/client.js` içindeki fonksiyonları kullanır.
 Böylece backend adresi değişirse tek bir dosya değişir.

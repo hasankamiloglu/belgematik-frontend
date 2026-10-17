@@ -22,6 +22,7 @@ body {
 }
 
 .topbar {
+    flex-wrap: wrap; gap: 10px;
     display: flex; align-items: center; justify-content: space-between;
     padding: 14px 24px; background: var(--card); border-bottom: 1px solid var(--line);
 }
@@ -61,3 +62,47 @@ h2 { font-size: 18px; margin-bottom: 12px; }
 
 .muted { color: var(--muted); }
 .error { color: #b42318; background: #fdecec; padding: 10px 14px; border-radius: 8px; }
+
+/* --- Hafta 5: giriş / kayıt / panel --- */
+.nav { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; justify-content: flex-end; }
+.nav a { color: var(--text); text-decoration: none; font-size: 14px; }
+.nav a:hover { color: var(--primary); }
+.user { font-size: 14px; display: inline-flex; align-items: center; gap: 6px; }
+.small { font-size: 13px; }
+
+.btn { display: inline-block; background: var(--primary); color: #fff !important; border: none; border-radius: 8px;
+       padding: 8px 16px; font: inherit; font-size: 14px; cursor: pointer; text-decoration: none; }
+.btn:disabled { opacity: .6; cursor: wait; }
+.btn-light { background: #eef0f5; color: var(--text) !important; }
+
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 20px; }
+.center { text-align: center; }
+.big-code { font-size: 48px; font-weight: 700; color: var(--primary); }
+
+.form-card { max-width: 420px; margin: 0 auto; }
+.form-card h1 { font-size: 24px; margin-top: 0; }
+form { display: flex; flex-direction: column; gap: 14px; }
+label { display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 600; }
+input, select { font: inherit; font-weight: 400; padding: 9px 12px; border: 1px solid var(--line); border-radius: 8px; background: #fff; }
+input:focus, select:focus { outline: 2px solid #d9c8ec; border-color: var(--primary); }
+
+.rules { list-style: none; padding: 0; margin: -6px 0 0; font-size: 13px; color: var(--muted); display: flex; gap: 14px; flex-wrap: wrap; }
+.rules .ok { color: var(--ok); }
+.info { background: #eef3fb; color: #2f5ea8; padding: 10px 14px; border-radius: 8px; }
+.error ul { margin: 6px 0 0; padding-left: 18px; }
+
+.badge.yonetici { background: #f1e9f8; color: var(--primary); }
+.badge.kullanici { background: #eef0f5; color: var(--muted); }
+
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 12px; margin-bottom: 16px; }
+.stat { display: flex; flex-direction: column; gap: 4px; padding: 14px 16px; }
+.stat span { font-size: 12px; color: var(--muted); }
+.stat b { overflow-wrap: anywhere; }
+
+.table-wrap { overflow-x: auto; background: var(--card); border: 1px solid var(--line); border-radius: 12px; margin-bottom: 24px; }
+table { width: 100%; border-collapse: collapse; font-size: 14px; }
+th, td { text-align: left; padding: 10px 14px; border-bottom: 1px solid var(--line); white-space: nowrap; }
+th { font-size: 12px; color: var(--muted); font-weight: 600; background: #fafbfd; }
+tr:last-child td { border-bottom: none; }
+.ok-text { color: var(--ok); }
+.err-text { color: #b42318; }
