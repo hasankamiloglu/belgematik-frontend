@@ -8,6 +8,7 @@
 //   #/giris     -> Giriş              (herkes)
 //   #/kayit     -> Kayıt              (herkes)
 //   #/panel     -> Kişisel panel      (giriş yapmış herkes)
+//   #/belgeler  -> Belge yükleme      (giriş yapmış herkes)  [Hafta 6]
 //   #/yonetici  -> Yönetici paneli    (sadece yönetici)
 
 import Header from "./components/Header.jsx";
@@ -15,6 +16,7 @@ import Hero from "./components/Hero.jsx";
 import KorumaliSayfa from "./components/KorumaliSayfa.jsx";
 import ModuleList from "./components/ModuleList.jsx";
 import { useHashRota } from "./hooks/useHashRota.js";
+import BelgelerSayfasi from "./pages/BelgelerSayfasi.jsx";
 import GirisSayfasi from "./pages/GirisSayfasi.jsx";
 import KayitSayfasi from "./pages/KayitSayfasi.jsx";
 import PanelSayfasi from "./pages/PanelSayfasi.jsx";
@@ -30,6 +32,12 @@ function Sayfa({ rota }) {
       return (
         <KorumaliSayfa>
           <PanelSayfasi />
+        </KorumaliSayfa>
+      );
+    case "/belgeler":
+      return (
+        <KorumaliSayfa>
+          <BelgelerSayfasi />
         </KorumaliSayfa>
       );
     case "/yonetici":

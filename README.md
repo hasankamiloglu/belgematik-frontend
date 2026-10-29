@@ -7,7 +7,7 @@
 > - **[belgematik-backend](https://github.com/hasankamiloglu/belgematik-backend)**: Python + Flask API
 >
 > Frontend, verileri backend'den **HTTP istekleriyle (JSON)** alır.
-> Durum: **v0.3 – Giriş, kayıt ve rol tabanlı sayfalar (Hafta 5)**
+> Durum: **v0.4 – Belge yükleme ve ön işleme ekranı (Hafta 6)**
 
 ## Teknolojiler
 
@@ -32,12 +32,16 @@ src/
 │   ├── GirisSayfasi.jsx
 │   ├── KayitSayfasi.jsx
 │   ├── PanelSayfasi.jsx    # giriş yapmış herkes
+│   ├── BelgelerSayfasi.jsx # yükleme + belgelerim (Hafta 6)
 │   └── YoneticiSayfasi.jsx # sadece yönetici
 └── components/         # Ekran parçaları (bileşenler)
     ├── Header.jsx      # Üst menü (giriş durumuna göre değişir)
     ├── HealthBadge.jsx # Backend bağlantı durumu rozeti
     ├── Hero.jsx        # Tanıtım bölümü
     ├── KorumaliSayfa.jsx # Giriş/yetki yoksa sayfayı göstermez
+    ├── KorumaliGorsel.jsx # Token gerektiren görseli indirip gösterir
+    ├── YuklemeAlani.jsx  # Sürükle-bırak / dosya seçme (tür, boyut ön kontrolü)
+    ├── Karsilastirma.jsx # Orijinal ve ön işlenmiş görsel yan yana
     └── ModuleList.jsx  # Backend'den gelen modül listesi
 ```
 
@@ -48,6 +52,7 @@ src/
 | `#/` | Ana sayfa | Herkes |
 | `#/giris`, `#/kayit` | Giriş / Kayıt | Herkes |
 | `#/panel` | Panelim | Giriş yapmış herkes |
+| `#/belgeler` | Belgelerim (yükleme) | Giriş yapmış herkes, sadece kendi belgeleri |
 | `#/yonetici` | Yönetici paneli | Sadece yönetici (değilse 403 ekranı) |
 
 Frontend'deki kontrol sadece görüntü içindir. Asıl yetki kontrolü backend'de yapılır.

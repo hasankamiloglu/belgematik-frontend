@@ -17,8 +17,8 @@ export default function GirisSayfasi() {
     setGonderiliyor(true);
     try {
       const kullanici = await giris(email, parola);
-      // Yönetici ise yönetici paneline, değilse kendi paneline git
-      git(kullanici.yetki === "yonetici" ? "/yonetici" : "/panel");
+      // Yönetici ise yönetici paneline, değilse belge yükleme sayfasına git
+      git(kullanici.yetki === "yonetici" ? "/yonetici" : "/belgeler");
     } catch (h) {
       // Backend'in mesajı: "E-posta veya parola hatalı." ya da kilit mesajı (429)
       setHata(h.message);

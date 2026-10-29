@@ -35,6 +35,7 @@ export default function Header() {
         {kullanici ? (
           <>
             <a href="#/panel">Panelim</a>
+            <a href="#/belgeler">Belgelerim</a>
             {/* Yönetici bağlantısı sadece yöneticiye görünür (asıl koruma backend'de) */}
             {kullanici.yetki === "yonetici" && <a href="#/yonetici">Yönetici</a>}
             <span className="user">

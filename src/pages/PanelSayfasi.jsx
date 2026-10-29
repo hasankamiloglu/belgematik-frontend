@@ -22,9 +22,7 @@ export default function PanelSayfasi() {
         <div className="card stat"><span>Kalan kredi</span><b>{kullanici.kalan_kredi ?? "—"}</b></div>
         <div className="card stat"><span>Son giriş</span><b>{sonGiris}</b></div>
       </div>
-      <p className="muted">
-        Belge yükleme ekranı sonraki haftalarda bu panele eklenecek.
-      </p>
+      <a className="btn" href="#/belgeler">Belge yükle →</a>
     </section>
   );
 }
