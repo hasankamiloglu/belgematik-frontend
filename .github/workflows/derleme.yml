@@ -1,0 +1,26 @@
+# GitHub Actions - Sürekli Entegrasyon (CI)
+# Her "git push"ta GitHub, React uygulamasını sıfırdan kurup derler (npm run build).
+# Kodda sözdizimi hatası, eksik dosya veya bozuk import varsa derleme kırmızı ✗ olur.
+# Sonuçlar: GitHub deposu -> "Actions" sekmesi
+
+name: Derleme
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Kodu indir
+        uses: actions/checkout@v4
+
+      - name: Node.js kur
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Paketleri kur
+        run: npm install
+
+      - name: Derle
+        run: npm run build

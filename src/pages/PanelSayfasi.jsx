@@ -1,10 +1,20 @@
 // PanelSayfasi.jsx - Giriş yapmış HER kullanıcının gördüğü kişisel panel.
 // App.jsx'te <KorumaliSayfa> ile sarıldığı için giriş yapmayan buraya giremez.
 
+import { useEffect, useState } from "react";
+import { benKimim } from "../api/client.js";
 import { useOturum } from "../auth/OturumContext.jsx";
 
 export default function PanelSayfasi() {
-  const { kullanici } = useOturum();
+  const oturum = useOturum();
+  // Hafta 8 hata düzeltmesi: Panel, girişte alınan ESKİ bilgiyi gösteriyordu
+  // (belge yükleyince "Kalan kredi" azalmıyordu). Artık sayfa her açıldığında
+  // güncel bilgi backend'den tekrar alınıyor; gelene kadar eski bilgi gösteriliyor.
+  const [guncel, setGuncel] = useState(null);
+  useEffect(() => {
+    benKimim().then((v) => setGuncel(v.kullanici)).catch(() => {});
+  }, []);
+  const kullanici = guncel || oturum.kullanici;
 
   // Tarihi Türkçe biçimde göster: 17.10.2026 23:40
   const sonGiris = kullanici.son_giris

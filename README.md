@@ -7,7 +7,7 @@
 > - **[belgematik-backend](https://github.com/hasankamiloglu/belgematik-backend)**: Python + Flask API
 >
 > Frontend, verileri backend'den **HTTP istekleriyle (JSON)** alır.
-> Durum: **v0.5 – Veri çıkarma ve şema ekranları (Hafta 7)**
+> Durum: **v0.7.0 – Ara sürüm (vize, Hafta 8)** 🏷️ Git etiketi `v0.7.0` · [CHANGELOG.md](CHANGELOG.md) · Her push'ta derleme GitHub Actions'ta kontrol edilir
 
 ## Teknolojiler
 

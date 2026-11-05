@@ -12,6 +12,8 @@
 //   #/semalar   -> Şema tanımı        (giriş yapmış herkes)  [Hafta 7]
 //   #/yonetici  -> Yönetici paneli    (sadece yönetici)
 
+import { useEffect } from "react";
+import { useOturum } from "./auth/OturumContext.jsx";
 import Header from "./components/Header.jsx";
 import Hero from "./components/Hero.jsx";
 import KorumaliSayfa from "./components/KorumaliSayfa.jsx";
@@ -74,6 +76,14 @@ function Sayfa({ rota }) {
 
 export default function App() {
   const rota = useHashRota(); // adres çubuğundaki #/... kısmı
+  const { setBilgiMesaji } = useOturum();
+
+  // Hafta 8 hata düzeltmesi: "Çıkış yapıldı" gibi bilgi mesajı hafızada kalıyor ve
+  // kullanıcı daha sonra giriş sayfasına döndüğünde ilgisiz şekilde tekrar görünüyordu.
+  // Ana sayfaya veya kayıt sayfasına geçilince eski mesaj silinir.
+  useEffect(() => {
+    if (rota === "/" || rota === "/kayit") setBilgiMesaji("");
+  }, [rota, setBilgiMesaji]);
 
   return (
     <>
