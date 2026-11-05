@@ -7,7 +7,7 @@
 > - **[belgematik-backend](https://github.com/hasankamiloglu/belgematik-backend)**: Python + Flask API
 >
 > Frontend, verileri backend'den **HTTP istekleriyle (JSON)** alır.
-> Durum: **v0.4 – Belge yükleme ve ön işleme ekranı (Hafta 6)**
+> Durum: **v0.5 – Veri çıkarma ve şema ekranları (Hafta 7)**
 
 ## Teknolojiler
 
@@ -33,6 +33,7 @@ src/
 │   ├── KayitSayfasi.jsx
 │   ├── PanelSayfasi.jsx    # giriş yapmış herkes
 │   ├── BelgelerSayfasi.jsx # yükleme + belgelerim (Hafta 6)
+│   ├── SemalarSayfasi.jsx  # şema listesi + yeni şema tanımlama (Hafta 7)
 │   └── YoneticiSayfasi.jsx # sadece yönetici
 └── components/         # Ekran parçaları (bileşenler)
     ├── Header.jsx      # Üst menü (giriş durumuna göre değişir)
@@ -42,6 +43,7 @@ src/
     ├── KorumaliGorsel.jsx # Token gerektiren görseli indirip gösterir
     ├── YuklemeAlani.jsx  # Sürükle-bırak / dosya seçme (tür, boyut ön kontrolü)
     ├── Karsilastirma.jsx # Orijinal ve ön işlenmiş görsel yan yana
+    ├── CikarimPenceresi.jsx # Şema seç → verileri çıkar → alanlar, güven, doğrulama (Hafta 7)
     └── ModuleList.jsx  # Backend'den gelen modül listesi
 ```
 
@@ -52,7 +54,8 @@ src/
 | `#/` | Ana sayfa | Herkes |
 | `#/giris`, `#/kayit` | Giriş / Kayıt | Herkes |
 | `#/panel` | Panelim | Giriş yapmış herkes |
-| `#/belgeler` | Belgelerim (yükleme) | Giriş yapmış herkes, sadece kendi belgeleri |
+| `#/belgeler` | Belgelerim (yükleme, veri çıkarma) | Giriş yapmış herkes, sadece kendi belgeleri |
+| `#/semalar` | Şemalar (tanımlama) | Giriş yapmış herkes; sistem şemaları + kendi şemaları |
 | `#/yonetici` | Yönetici paneli | Sadece yönetici (değilse 403 ekranı) |
 
 Frontend'deki kontrol sadece görüntü içindir. Asıl yetki kontrolü backend'de yapılır.

@@ -9,6 +9,7 @@
 //   #/kayit     -> Kayıt              (herkes)
 //   #/panel     -> Kişisel panel      (giriş yapmış herkes)
 //   #/belgeler  -> Belge yükleme      (giriş yapmış herkes)  [Hafta 6]
+//   #/semalar   -> Şema tanımı        (giriş yapmış herkes)  [Hafta 7]
 //   #/yonetici  -> Yönetici paneli    (sadece yönetici)
 
 import Header from "./components/Header.jsx";
@@ -20,6 +21,7 @@ import BelgelerSayfasi from "./pages/BelgelerSayfasi.jsx";
 import GirisSayfasi from "./pages/GirisSayfasi.jsx";
 import KayitSayfasi from "./pages/KayitSayfasi.jsx";
 import PanelSayfasi from "./pages/PanelSayfasi.jsx";
+import SemalarSayfasi from "./pages/SemalarSayfasi.jsx";
 import YoneticiSayfasi from "./pages/YoneticiSayfasi.jsx";
 
 function Sayfa({ rota }) {
@@ -38,6 +40,12 @@ function Sayfa({ rota }) {
       return (
         <KorumaliSayfa>
           <BelgelerSayfasi />
+        </KorumaliSayfa>
+      );
+    case "/semalar":
+      return (
+        <KorumaliSayfa>
+          <SemalarSayfasi />
         </KorumaliSayfa>
       );
     case "/yonetici":

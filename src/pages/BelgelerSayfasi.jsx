@@ -4,6 +4,7 @@
 
 import { useEffect, useState } from "react";
 import { belgeSil, belgeYukle, belgeleriGetir } from "../api/client.js";
+import CikarimPenceresi from "../components/CikarimPenceresi.jsx";
 import Karsilastirma from "../components/Karsilastirma.jsx";
 import KorumaliGorsel from "../components/KorumaliGorsel.jsx";
 import YuklemeAlani from "../components/YuklemeAlani.jsx";
@@ -28,6 +29,7 @@ export default function BelgelerSayfasi() {
   const [sonuc, setSonuc] = useState(null); // son yüklemenin sonucu (başarı/uyarı)
   const [hata, setHata] = useState("");
   const [secili, setSecili] = useState(null); // karşılaştırma penceresinde açık belge
+  const [islenen, setIslenen] = useState(null); // veri çıkarma penceresinde açık belge (Hafta 7)
 
   // Listeyi backend'den yeniden çeker
   function yenile() {
@@ -122,13 +124,21 @@ export default function BelgelerSayfasi() {
                 )}
               </div>
               {b.kalite_uyarilari.map((u) => <span key={u} className="uyari-yazi">⚠ {u}</span>)}
-              <button className="link-btn" onClick={() => sil(b)}>Sil</button>
+              <div className="kart-butonlar">
+                {b.on_islenmis && (
+                  <button className="btn" onClick={() => setIslenen(b)}>
+                    {b.durum === "islendi" ? "Verileri gör" : "Verileri çıkar"}
+                  </button>
+                )}
+                <button className="link-btn" onClick={() => sil(b)}>Sil</button>
+              </div>
             </div>
           </article>
         ))}
       </div>
 
       {secili && <Karsilastirma belge={secili} kapat={() => setSecili(null)} />}
+      {islenen && <CikarimPenceresi belge={islenen} kapat={() => setIslenen(null)} islendi={yenile} />}
     </section>
   );
 }

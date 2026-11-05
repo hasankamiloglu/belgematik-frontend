@@ -97,3 +97,12 @@ export async function gorselAdresi(id, tur) {
   const blob = await istek(`/belgeler/${id}/gorsel?tur=${tur}`, { ham: true });
   return URL.createObjectURL(blob);
 }
+
+// --- Hafta 7: şemalar ve belge işleme (OCR + alan eşleme + doğrulama) ---
+export const semalariGetir = () => istek("/semalar");
+export const semaOlustur = (sema) => istek("/semalar", { method: "POST", govde: sema });
+export const semaSil = (id) => istek(`/semalar/${id}`, { method: "DELETE" });
+/** Belgeyi seçilen şemayla işler: OCR -> alan eşleme -> doğrulama -> kayıt */
+export const belgeIsle = (belgeId, semaId) =>
+  istek(`/belgeler/${belgeId}/isle`, { method: "POST", govde: { sema_id: semaId } });
+export const cikarimGetir = (belgeId) => istek(`/belgeler/${belgeId}/cikarim`);
